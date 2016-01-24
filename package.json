@@ -1,0 +1,27 @@
+{
+  "name": "cloud-init-server",
+  "version": "0.0.1",
+  "description": "Dynamically generate cloud-init files based on templates.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aq1018/cloud-init-server.git"
+  },
+  "keywords": [
+    "cloud-init",
+    "template"
+  ],
+  "author": "Aaron Qian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aq1018/cloud-init-server/issues"
+  },
+  "homepage": "https://github.com/aq1018/cloud-init-server#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "mu2": "^0.5.20"
+  }
+}
