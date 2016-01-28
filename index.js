@@ -113,10 +113,11 @@ Registry.init = function(basePath) {
   return Q.nfcall(glob, pattern, { nodir: true })
     .then(function (files) {
       return Q.all(files.map(function(file) {
-        console.log('[module]', file);
+        var moduleName = path.dirname(path.relative(basePath, file));
+        console.log('[' + moduleName + '] Loading...');
         return Module.init({
           basePath: basePath,
-          name: path.dirname(path.relative(basePath, file))
+          name: moduleName
         });
       }));
     })
