@@ -24,6 +24,7 @@
     "express": "^4.13.4",
     "glob": "^6.0.4",
     "hogan.js": "^3.0.2",
+    "mime-multipart-stream": "^0.2.0",
     "nodegit": "^0.9.0",
     "q": "^1.4.1"
   }
