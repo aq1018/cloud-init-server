@@ -1,6 +1,6 @@
 {
   "name": "cloud-init-server",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Dynamically generate cloud-init files based on templates.",
   "main": "index.js",
   "bin": "index.js",

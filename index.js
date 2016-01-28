@@ -232,7 +232,7 @@ function readFile(file) {
  * Startup
  */
 var port = process.env.PORT || 8888;
-var modulesPath = process.execArgv[0] || '.';
+var modulesPath = process.argv[2] || '.';
 var server;
 
 Registry.init(modulesPath)
