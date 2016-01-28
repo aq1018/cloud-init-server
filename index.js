@@ -108,9 +108,12 @@ function Registry(modules) {
 Registry.init = function(basePath) {
   var pattern = path.join(basePath, '**', 'cloudinit.json');
 
+  console.log('Loading modules from: ' + path.resolve(basePath));
+
   return Q.nfcall(glob, pattern, { nodir: true })
     .then(function (files) {
       return Q.all(files.map(function(file) {
+        console.log('[module]', file);
         return Module.init({
           basePath: basePath,
           name: path.dirname(path.relative(basePath, file))
@@ -118,6 +121,7 @@ Registry.init = function(basePath) {
       }));
     })
     .then(function(modules) {
+      console.log('Loaded ' + modules.length + ' module(s).');
       return new Registry(modules);
     });
 }
@@ -185,6 +189,7 @@ function Server(registry) {
   // The server is ready to handle connections when
   // the returned promise is resolved.
   function start(port) {
+    console.log('Starting Server on port: ' + port);
     return Q.ninvoke(app, 'listen', port);
   }
 
@@ -227,7 +232,7 @@ function readFile(file) {
  * Startup
  */
 var port = process.env.PORT || 8888;
-var modulesPath = '.';
+var modulesPath = process.execArgv[0] || '.';
 var server;
 
 Registry.init(modulesPath)
@@ -236,5 +241,5 @@ Registry.init(modulesPath)
     return server.start(port);
   })
   .done(function() {
-    console.log('server started!');
+    console.log('Server started!');
   });
